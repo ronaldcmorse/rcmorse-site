@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RC Morse | Operations • Workplace • Executive Support</title>
+  <meta name="description" content="RC Morse provides hands-on operations, workplace, and executive support for organizations navigating change and complexity." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- HEADER (simple, cohesive, avoids “two pages competing”) -->
+    <header class="header">
+      <div class="top-row">
+        <div class="logo-kicker">RC MORSE</div>
+
+        <nav class="top-actions" aria-label="Primary actions">
+          <a class="btn primary" id="emailBtn" href="#" rel="nofollow">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/ronald-c-morse" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://ronaldcmorse.com" target="_blank" rel="noopener">Background &amp; Portfolio</a>
+        </nav>
+      </div>
+
+      <h1>Operations • Workplace • Executive Support</h1>
+      <div class="principal">Principal: Ronald C. Morse</div>
+
+      <p class="sub">
+        Hands-on operational support for organizations and principals navigating growth, change, or complexity. Offering calm execution, clear documentation, and reliable follow-through.
+      </p>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="grid">
+      <section class="card">
+        <img class="hero-image" src="assets/home_office.png" alt="Tidy office setup" />
+        <div class="pad">
+          <div class="kicker">What I do</div>
+          <ul class="list">
+            <li><b>Workplace &amp; Facilities Operations</b>: vendor coordination, access, maintenance cadence, standards</li>
+            <li><b>Office &amp; Administrative Operations</b>: purchasing, process improvement, SOPs, employee support</li>
+            <li><b>AV / IT Coordination</b>: conference rooms, displays, deployments, vendor/IT liaison work</li>
+            <li><b>Projects &amp; Transitions</b>: moves, consolidations, integrations, cleanups, post-change stabilization</li>
+          </ul>
+
+          <div class="caption">Imagery used as neutral, illustrative visuals (not client work).</div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="pad">
+          <div class="kicker">Availability</div>
+          <p class="availability">
+            Select advisory and project work; open to the right full-time role when aligned.
+          </p>
+
+          <div class="spacer"></div>
+
+          <div class="kicker">Typical engagements</div>
+          <ul class="list">
+            <li>Office setup / refresh / “make it work” stabilization</li>
+            <li>Vendor review &amp; realignment</li>
+            <li>Room/AV reliability and conferencing cleanup</li>
+            <li>Process + documentation buildout (SOPs, training)</li>
+            <li>Move planning and execution sequencing</li>
+          </ul>
+
+          <div class="spacer"></div>
+
+          <div class="kicker">Contact</div>
+          <p class="contact-note">Use the button below to reach me directly.</p>
+
+          <div class="spacer-sm"></div>
+
+          <a class="btn primary" id="startConversationBtn" href="#" rel="nofollow">Start a conversation</a>
+
+          <div class="spacer-sm"></div>
+
+        </div>
+      </aside>
+    </main>
+
+    <!-- FOOTER (logo only here) -->
+    <footer class="footer">
+      <div class="footer-left">
+        <img src="assets/rcm-logo.png" alt="RC Morse" class="footer-logo" />
+        <span class="footer-text">© <span id="y"></span> RC Morse. Stamford CT / Westchester NY / NYC.</span>
+      </div>
+
+      <div class="links">
+        <a href="https://rcmorse.com">rcmorse.com</a>
+        <a href="https://ronaldcmorse.com" target="_blank" rel="noopener">ronaldcmorse.com</a>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+  // Footer year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  (function () {
+    const user = 'ron';
+    const domain = 'rcmorse.com';
+    const addr = `${user}@${domain}`;
+    const subject = encodeURIComponent('RC Morse — inquiry');
+    const mailto = `mailto:${addr}?subject=${subject}`;
+
+    const emailBtn = document.getElementById('emailBtn');
+    const startBtn = document.getElementById('startConversationBtn');
+
+    function setupRevealButton(el, initialLabel) {
+      let revealed = false;
+
+      el.textContent = initialLabel;
+      el.href = '#';
+      el.setAttribute('rel', 'nofollow');
+
+      el.addEventListener('click', function (e) {
+        if (!revealed) {
+          // First click: reveal email text only
+          e.preventDefault();
+          revealed = true;
+          el.textContent = addr;
+          el.setAttribute('aria-label', `Email ${addr}`);
+
+          // Arm mailto AFTER reveal so second click opens mail client
+          setTimeout(() => {
+            el.href = mailto;
+          }, 0);
+        }
+        // Second click proceeds naturally to mailto
+      });
+    }
+
+    // Apply same behavior to BOTH buttons
+    if (emailBtn) {
+      setupRevealButton(emailBtn, 'Email');
+    }
+
+    if (startBtn) {
+      setupRevealButton(startBtn, 'Start a conversation');
+    }
+  })();
+</script>
+</body>
+</html>
